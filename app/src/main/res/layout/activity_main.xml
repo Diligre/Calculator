@@ -12,8 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/imSix"
+        app:layout_constraintEnd_toStartOf="@+id/imSubtraction"
         app:layout_constraintStart_toEndOf="@+id/imEight"
         app:srcCompat="@mipmap/lllllllllllllllllllll9999999999999999lllllllllllllllllllll" />
 
@@ -42,8 +44,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/imThree"
+        app:layout_constraintEnd_toStartOf="@+id/imPlus"
         app:layout_constraintStart_toEndOf="@+id/imFive"
         app:srcCompat="@mipmap/llllllllllllllll66666666llllllllllllllll" />
 
@@ -71,9 +75,9 @@
         android:id="@+id/imThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imEqual"
         app:layout_constraintStart_toEndOf="@+id/imTwo"
         app:srcCompat="@mipmap/lllllllllll3333333333lllllllllll" />
 
@@ -81,9 +85,9 @@
         android:id="@+id/imTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imThree"
         app:layout_constraintStart_toEndOf="@+id/imOne"
         app:srcCompat="@mipmap/llllllllllllllll2222222llllll" />
 
@@ -91,61 +95,63 @@
         android:id="@+id/imMultiply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/imSubtraction"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@mipmap/baseline_clear_black_48"
-        android:contentDescription="TODO" />
+        app:srcCompat="@mipmap/baseline_clear_black_48" />
 
     <ImageButton
         android:id="@+id/imPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/imEqual"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@mipmap/baseline_add_black_48"
-        android:contentDescription="TODO" />
+        app:srcCompat="@mipmap/baseline_add_black_48" />
 
     <ImageButton
         android:id="@+id/imSubtraction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/imPlus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@mipmap/baseline_remove_black_48"
-        android:contentDescription="TODO" />
+        app:srcCompat="@mipmap/baseline_remove_black_48" />
 
     <ImageButton
         android:id="@+id/imEqual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@mipmap/baseline_pause_black_48"
-        android:contentDescription="TODO" />
+        app:layout_constraintStart_toEndOf="@+id/imThree"
+        app:srcCompat="@mipmap/baseline_pause_black_48" />
 
     <ImageButton
         android:id="@+id/imDivide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
+        android:layout_marginTop="141dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/imMultiply"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/baseline_call_made_black_48" />
 
     <TextView
         android:id="@+id/tvResult"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="175dp"
+        android:layout_marginStart="136dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="175dp"
         android:text="0"
@@ -158,10 +164,20 @@
         android:id="@+id/imOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imTwo"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/lllllllllllllllll111111111111111lllllll" />
+
+    <ImageButton
+        android:id="@+id/imClearLastSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="29dp"
+        app:layout_constraintBottom_toTopOf="@+id/imSeven"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/baseline_keyboard_backspace_black_48" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

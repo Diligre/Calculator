@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     public ImageButton divide;
     public ImageButton multiply;
 
+    public ImageButton clearLastSymbol;
+
     public ImageButton one;
     public ImageButton two;
     public ImageButton three;
@@ -30,11 +32,10 @@ public class MainActivity extends AppCompatActivity {
     public ImageButton eight;
     public ImageButton nine;
 
-    public String number;
     private Operation operation;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         seven = (ImageButton) findViewById(R.id.imSeven);
         eight = (ImageButton) findViewById(R.id.imEight);
         nine = (ImageButton) findViewById(R.id.imNine);
+
+        clearLastSymbol = (ImageButton) findViewById(R.id.imClearLastSymbol);
 
         final StringBuilder stringBuild = new StringBuilder();
 
@@ -112,6 +115,25 @@ public class MainActivity extends AppCompatActivity {
         eight.setOnClickListener(onClickListener);
         nine.setOnClickListener(onClickListener);
 
+        clearLastSymbol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (stringBuild.length() != 0) {
+                    stringBuild.delete(stringBuild.length() - 1, stringBuild.length());
+                    tvResult.setText(stringBuild);
+                } else {
+                    if (tvResult.length() != 0) {
+                        stringBuild.append(tvResult.getText());
+                        stringBuild.delete(stringBuild.length() - 1, stringBuild.length());
+                        tvResult.setText(stringBuild);
+                    }
+                }
+                if (tvResult.getText().length() < 1){
+                    tvResult.setText("0");
+                }
+            }
+        });
 
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,10 +149,10 @@ public class MainActivity extends AppCompatActivity {
         subtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),operation+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), operation + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
                 setNumberOne(Integer.parseInt(a));
-                stringBuild.delete(0,stringBuild.length());
+                stringBuild.delete(0, stringBuild.length());
                 operation = Operation.SUBTRACTION;
             }
         });
@@ -138,10 +160,10 @@ public class MainActivity extends AppCompatActivity {
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),operation+"",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), operation + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
                 setNumberOne(Integer.parseInt(a));
-                stringBuild.delete(0,stringBuild.length());
+                stringBuild.delete(0, stringBuild.length());
                 operation = Operation.DIVIDE;
             }
         });
@@ -149,10 +171,10 @@ public class MainActivity extends AppCompatActivity {
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),operation+"",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), operation + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
                 setNumberOne(Integer.parseInt(a));
-                stringBuild.delete(0,stringBuild.length());
+                stringBuild.delete(0, stringBuild.length());
                 operation = Operation.MULTIPLY;
             }
         });
@@ -186,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String b = (String) tvResult.getText();
                 setNumberOne(Integer.parseInt(b));
-                stringBuild.delete(0,stringBuild.length());
+                stringBuild.delete(0, stringBuild.length());
             }
         });
 
