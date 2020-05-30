@@ -8,176 +8,159 @@
 
 
     <ImageButton
-        android:id="@+id/imNine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/imSix"
-        app:layout_constraintEnd_toStartOf="@+id/imSubtraction"
-        app:layout_constraintStart_toEndOf="@+id/imEight"
-        app:srcCompat="@mipmap/lllllllllllllllllllll9999999999999999lllllllllllllllllllll" />
-
-    <ImageButton
-        android:id="@+id/imEight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/imFive"
-        app:layout_constraintStart_toEndOf="@+id/imSeven"
-        app:srcCompat="@mipmap/lllllllll88888888888888888llllllllllllllllll" />
-
-    <ImageButton
-        android:id="@+id/imSeven"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/imFour"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/llllllllllllllllllll777777777777777lllllllllllllllllllllllll" />
-
-    <ImageButton
-        android:id="@+id/imSix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/imThree"
-        app:layout_constraintEnd_toStartOf="@+id/imPlus"
-        app:layout_constraintStart_toEndOf="@+id/imFive"
-        app:srcCompat="@mipmap/llllllllllllllll66666666llllllllllllllll" />
-
-    <ImageButton
-        android:id="@+id/imFive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/imTwo"
-        app:layout_constraintStart_toEndOf="@+id/imFour"
-        app:srcCompat="@mipmap/lllllllllllll5lllllllllllllllllllllll" />
-
-    <ImageButton
-        android:id="@+id/imFour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/imOne"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/llllllllllllllll444444444444lllllllll" />
-
-    <ImageButton
-        android:id="@+id/imThree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imEqual"
-        app:layout_constraintStart_toEndOf="@+id/imTwo"
-        app:srcCompat="@mipmap/lllllllllll3333333333lllllllllll" />
-
-    <ImageButton
-        android:id="@+id/imTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imThree"
-        app:layout_constraintStart_toEndOf="@+id/imOne"
-        app:srcCompat="@mipmap/llllllllllllllll2222222llllll" />
-
-    <ImageButton
         android:id="@+id/imMultiply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/imSubtraction"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imDivide"
         app:srcCompat="@mipmap/baseline_clear_black_48" />
 
     <ImageButton
         android:id="@+id/imPlus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/imEqual"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imSix"
         app:srcCompat="@mipmap/baseline_add_black_48" />
 
     <ImageButton
         android:id="@+id/imSubtraction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/imPlus"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imNine"
         app:srcCompat="@mipmap/baseline_remove_black_48" />
 
     <ImageButton
         android:id="@+id/imEqual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imZero"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imThree"
         app:srcCompat="@mipmap/baseline_pause_black_48" />
 
-    <ImageButton
-        android:id="@+id/imDivide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="141dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/imMultiply"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/baseline_call_made_black_48" />
-
     <TextView
         android:id="@+id/tvResult"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="175dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="0"
         android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/imColon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/imClearLastSymbol"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imSeven"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/baseline_keyboard_backspace_black_48" />
+
+    <ImageButton
+        android:id="@+id/imNine"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imSix"
+        app:layout_constraintStart_toEndOf="@+id/imEight"
+        app:srcCompat="@mipmap/lllllllllllllllllllll9999999999999999lllllllllllllllllllll" />
+
+    <ImageButton
+        android:id="@+id/imDivide"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imNine"
+        app:layout_constraintStart_toEndOf="@+id/imColon"
+        app:srcCompat="@mipmap/baseline_call_made_black_48" />
+
+    <ImageButton
+        android:id="@+id/imSeven"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imFour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/llllllllllllllllllll777777777777777lllllllllllllllllllllllll" />
+
+    <ImageButton
+        android:id="@+id/imColon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imEight"
+        app:layout_constraintStart_toEndOf="@+id/imClearLastSymbol"
+        app:srcCompat="@mipmap/baseline_format_quote_black_48" />
+
+    <ImageButton
+        android:id="@+id/imEight"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imFive"
+        app:layout_constraintStart_toEndOf="@+id/imSeven"
+        app:srcCompat="@mipmap/lllllllll88888888888888888llllllllllllllllll" />
+
+    <ImageButton
+        android:id="@+id/imTwo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imZero"
+        app:layout_constraintStart_toEndOf="@+id/imOne"
+        app:srcCompat="@mipmap/llllllllllllllll2222222llllll" />
+
+    <ImageButton
+        android:id="@+id/imFive"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imTwo"
+        app:layout_constraintStart_toEndOf="@+id/imFour"
+        app:srcCompat="@mipmap/lllllllllllll5lllllllllllllllllllllll" />
+
+    <ImageButton
+        android:id="@+id/imSix"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imThree"
+        app:layout_constraintStart_toEndOf="@+id/imFive"
+        app:srcCompat="@mipmap/llllllllllllllll66666666llllllllllllllll" />
+
+    <ImageButton
+        android:id="@+id/imFour"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imOne"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/llllllllllllllll444444444444lllllllll" />
+
+    <ImageButton
         android:id="@+id/imOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imTwo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imZero"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/lllllllllllllllll111111111111111lllllll" />
 
     <ImageButton
-        android:id="@+id/imClearLastSymbol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="29dp"
-        app:layout_constraintBottom_toTopOf="@+id/imSeven"
+        android:id="@+id/imThree"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/imZero"
+        app:layout_constraintStart_toEndOf="@+id/imTwo"
+        app:srcCompat="@mipmap/lllllllllll3333333333lllllllllll" />
+
+    <ImageButton
+        android:id="@+id/imZero"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/baseline_keyboard_backspace_black_48" />
+        app:srcCompat="@mipmap/llllllll000000000000000000000llllllllll" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Number number;
+    private Number number;
+    private OperationEnum operationEnum;
+    private StringBuilder stringBuild;
 
     public TextView tvResult;
 
@@ -20,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
     public ImageButton equal;
     public ImageButton divide;
     public ImageButton multiply;
-
     public ImageButton clearLastSymbol;
+    public ImageButton colon;
 
+    public ImageButton zero;
     public ImageButton one;
     public ImageButton two;
     public ImageButton three;
@@ -33,18 +36,14 @@ public class MainActivity extends AppCompatActivity {
     public ImageButton eight;
     public ImageButton nine;
 
-    private OperationEnum operationEnum;
-
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         number = new Number();
-
         operationEnum = OperationEnum.DEFAULT;
-
+        stringBuild = new StringBuilder();
 
         tvResult = (TextView) findViewById(R.id.tvResult);
         plus = (ImageButton) findViewById(R.id.imPlus);
@@ -52,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
         equal = (ImageButton) findViewById(R.id.imEqual);
         divide = (ImageButton) findViewById(R.id.imDivide);
         multiply = (ImageButton) findViewById(R.id.imMultiply);
+        clearLastSymbol = (ImageButton) findViewById(R.id.imClearLastSymbol);
+        colon = (ImageButton) findViewById(R.id.imColon);
 
+        zero = (ImageButton) findViewById(R.id.imZero);
         one = (ImageButton) findViewById(R.id.imOne);
         two = (ImageButton) findViewById(R.id.imTwo);
         three = (ImageButton) findViewById(R.id.imThree);
@@ -63,55 +65,47 @@ public class MainActivity extends AppCompatActivity {
         eight = (ImageButton) findViewById(R.id.imEight);
         nine = (ImageButton) findViewById(R.id.imNine);
 
-        clearLastSymbol = (ImageButton) findViewById(R.id.imClearLastSymbol);
-
-        final StringBuilder stringBuild = new StringBuilder();
-
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+                    case R.id.imZero:
+                        stringBuild.append(0);
+                        break;
                     case R.id.imOne:
                         stringBuild.append(1);
-                        tvResult.setText(stringBuild);
                         break;
                     case R.id.imTwo:
                         stringBuild.append(2);
-                        tvResult.setText(stringBuild);
                         break;
                     case R.id.imThree:
                         stringBuild.append(3);
-                        tvResult.setText(stringBuild);
                         break;
                     case R.id.imFour:
                         stringBuild.append(4);
-                        tvResult.setText(stringBuild);
                         break;
                     case R.id.imFive:
                         stringBuild.append(5);
-                        tvResult.setText(stringBuild);
                         break;
                     case R.id.imSix:
                         stringBuild.append(6);
-                        tvResult.setText(stringBuild);
                         break;
                     case R.id.imSeven:
                         stringBuild.append(7);
-                        tvResult.setText(stringBuild);
                         break;
                     case R.id.imEight:
                         stringBuild.append(8);
-                        tvResult.setText(stringBuild);
                         break;
                     case R.id.imNine:
                         stringBuild.append(9);
-                        tvResult.setText(stringBuild);
                         break;
                 }
+                tvResult.setText(stringBuild);
             }
         };
 
+        zero.setOnClickListener(onClickListener);
         one.setOnClickListener(onClickListener);
         two.setOnClickListener(onClickListener);
         three.setOnClickListener(onClickListener);
@@ -147,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "SLAVIK IS REALY MACHINE", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
-                number.setNumberOne(Integer.parseInt(a));
+                number.setNumberOne(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
                 operationEnum = OperationEnum.PLUS;
             }
@@ -156,11 +150,16 @@ public class MainActivity extends AppCompatActivity {
         subtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
-                String a = (String) tvResult.getText();
-                number.setNumberOne(Integer.parseInt(a));
-                stringBuild.delete(0, stringBuild.length());
-                operationEnum = OperationEnum.SUBTRACTION;
+                if (stringBuild.length() == 0) {
+                    stringBuild.append("-");
+                    tvResult.setText(stringBuild);
+                } else {
+                    Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
+                    String a = (String) tvResult.getText();
+                    number.setNumberOne(Double.parseDouble(a));
+                    stringBuild.delete(0, stringBuild.length());
+                    operationEnum = OperationEnum.SUBTRACTION;
+                }
             }
         });
 
@@ -169,9 +168,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
-                number.setNumberOne(Integer.parseInt(a));
+                number.setNumberOne(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
                 operationEnum = OperationEnum.DIVIDE;
+            }
+        });
+
+        colon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (stringBuild.length() == 0){
+                    stringBuild.append("0.");
+                }
+                else {
+                    stringBuild.append(".");
+                }
+                tvResult.setText(stringBuild);
             }
         });
 
@@ -180,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
-                number.setNumberOne(Integer.parseInt(a));
+                number.setNumberOne(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
                 operationEnum = OperationEnum.MULTIPLY;
             }
@@ -192,9 +204,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "SVLAVIK IS XYI", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
-                number.setNumberTwo(Integer.parseInt(a));
+                number.setNumberTwo(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
-                int result;
+                double result;
                 switch (operationEnum) {
                     case PLUS:
                         result = number.getNumberOne() + number.getNumberTwo();
@@ -215,13 +227,12 @@ public class MainActivity extends AppCompatActivity {
                         throw new IllegalStateException("Unexpected value: " + operationEnum);
                 }
 
-                tvResult.setText(Integer.toString(result));
+                tvResult.setText(Double.toString(result));
 
                 String b = (String) tvResult.getText();
-                number.setNumberOne(Integer.parseInt(b));
+                number.setNumberOne(Double.parseDouble(b));
                 stringBuild.delete(0, stringBuild.length());
             }
         });
-
     }
 }

@@ -2,22 +2,22 @@ package com.example.calculator;
 
 public class Number {
 
-    private int numberOne;
-    private int numberTwo;
+    private double numberOne;
+    private double numberTwo;
 
-    public int getNumberOne() {
+    public double getNumberOne() {
         return numberOne;
     }
 
-    public void setNumberOne(int numberOne) {
+    public void setNumberOne(double numberOne) {
         this.numberOne = numberOne;
     }
 
-    public int getNumberTwo() {
+    public double getNumberTwo() {
         return numberTwo;
     }
 
-    public void setNumberTwo(int numberTwo) {
+    public void setNumberTwo(double numberTwo) {
         this.numberTwo = numberTwo;
     }
 }
