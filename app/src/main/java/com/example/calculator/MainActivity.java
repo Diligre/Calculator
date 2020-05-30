@@ -11,9 +11,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public Number number;
+
     public TextView tvResult;
-    public int numberOne;
-    public int numberTwo;
+
     public ImageButton plus;
     public ImageButton subtraction;
     public ImageButton equal;
@@ -32,12 +33,18 @@ public class MainActivity extends AppCompatActivity {
     public ImageButton eight;
     public ImageButton nine;
 
-    private Operation operation;
+    private OperationEnum operationEnum;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        number = new Number();
+
+        operationEnum = OperationEnum.DEFAULT;
+
 
         tvResult = (TextView) findViewById(R.id.tvResult);
         plus = (ImageButton) findViewById(R.id.imPlus);
@@ -129,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                         tvResult.setText(stringBuild);
                     }
                 }
-                if (tvResult.getText().length() < 1){
+                if (tvResult.getText().length() < 1) {
                     tvResult.setText("0");
                 }
             }
@@ -140,42 +147,42 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "SLAVIK IS REALY MACHINE", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
-                setNumberOne(Integer.parseInt(a));
+                number.setNumberOne(Integer.parseInt(a));
                 stringBuild.delete(0, stringBuild.length());
-                operation = Operation.PLUS;
+                operationEnum = OperationEnum.PLUS;
             }
         });
 
         subtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), operation + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
-                setNumberOne(Integer.parseInt(a));
+                number.setNumberOne(Integer.parseInt(a));
                 stringBuild.delete(0, stringBuild.length());
-                operation = Operation.SUBTRACTION;
+                operationEnum = OperationEnum.SUBTRACTION;
             }
         });
 
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), operation + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
-                setNumberOne(Integer.parseInt(a));
+                number.setNumberOne(Integer.parseInt(a));
                 stringBuild.delete(0, stringBuild.length());
-                operation = Operation.DIVIDE;
+                operationEnum = OperationEnum.DIVIDE;
             }
         });
 
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), operation + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
-                setNumberOne(Integer.parseInt(a));
+                number.setNumberOne(Integer.parseInt(a));
                 stringBuild.delete(0, stringBuild.length());
-                operation = Operation.MULTIPLY;
+                operationEnum = OperationEnum.MULTIPLY;
             }
         });
 
@@ -185,49 +192,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "SVLAVIK IS XYI", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
-                setNumberTwo(Integer.parseInt(a));
+                number.setNumberTwo(Integer.parseInt(a));
                 stringBuild.delete(0, stringBuild.length());
-                int result = 0;
-                switch (operation) {
+                int result;
+                switch (operationEnum) {
                     case PLUS:
-                        result = getNumberOne() + getNumberTwo();
+                        result = number.getNumberOne() + number.getNumberTwo();
                         break;
                     case SUBTRACTION:
-                        result = getNumberOne() - getNumberTwo();
+                        result = number.getNumberOne() - number.getNumberTwo();
                         break;
                     case DIVIDE:
-                        result = getNumberOne() / getNumberTwo();
+                        result = number.getNumberOne() / number.getNumberTwo();
                         break;
                     case MULTIPLY:
-                        result = getNumberOne() * getNumberTwo();
+                        result = number.getNumberOne() * number.getNumberTwo();
                         break;
-
+                    case DEFAULT:
+                        result = 0;
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + operationEnum);
                 }
 
                 tvResult.setText(Integer.toString(result));
 
                 String b = (String) tvResult.getText();
-                setNumberOne(Integer.parseInt(b));
+                number.setNumberOne(Integer.parseInt(b));
                 stringBuild.delete(0, stringBuild.length());
             }
         });
 
-    }
-
-
-    public int setNumberOne(int a) {
-        return this.numberOne = a;
-    }
-
-    public int setNumberTwo(int a) {
-        return this.numberTwo = a;
-    }
-
-    public int getNumberOne() {
-        return numberOne;
-    }
-
-    public int getNumberTwo() {
-        return numberTwo;
     }
 }
