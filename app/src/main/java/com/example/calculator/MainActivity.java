@@ -77,65 +77,63 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.imZero:
-
                         if (boolka) {
                             stringBuild.append(0);
-                        }
-                        else if (stringBuild.indexOf("0") != 0) {
+                        } else if (stringBuild.indexOf("0") != 0) {
                             stringBuild.append(0);
-                    }
-                    break;
+                        }
+                        break;
                     case R.id.imOne:
-                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
-                            stringBuild.delete(0,stringBuild.length());
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0) {
+                            stringBuild.delete(0, stringBuild.length());
                         }
                         stringBuild.append(1);
                         break;
                     case R.id.imTwo:
-                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
-                            stringBuild.delete(0,stringBuild.length());
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0) {
+                            stringBuild.delete(0, stringBuild.length());
                         }
                         stringBuild.append(2);
                         break;
                     case R.id.imThree:
-                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
-                            stringBuild.delete(0,stringBuild.length());
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0) {
+                            stringBuild.delete(0, stringBuild.length());
                         }
                         stringBuild.append(3);
                         break;
                     case R.id.imFour:
-                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
-                            stringBuild.delete(0,stringBuild.length());
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0) {
+                            stringBuild.delete(0, stringBuild.length());
                         }
                         stringBuild.append(4);
                         break;
                     case R.id.imFive:
-                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
-                            stringBuild.delete(0,stringBuild.length());
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0) {
+                            stringBuild.delete(0, stringBuild.length());
                         }
                         stringBuild.append(5);
                         break;
                     case R.id.imSix:
-                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
-                            stringBuild.delete(0,stringBuild.length());
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0) {
+                            stringBuild.delete(0, stringBuild.length());
                         }
                         stringBuild.append(6);
                         break;
                     case R.id.imSeven:
-                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
-                            stringBuild.delete(0,stringBuild.length());
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0) {
+                            stringBuild.delete(0, stringBuild.length());
                         }
                         stringBuild.append(7);
                         break;
                     case R.id.imEight:
-                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
-                            stringBuild.delete(0,stringBuild.length());
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0) {
+                            stringBuild.delete(0, stringBuild.length());
                         }
                         stringBuild.append(8);
                         break;
                     case R.id.imNine:
-                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
-                            stringBuild.delete(0,stringBuild.length());
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0) {
+                            stringBuild.delete(0, stringBuild.length());
                         }
                         stringBuild.append(9);
                         break;
@@ -173,8 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 if (tvResult.getText().length() < 1) {
                     tvResult.setText("0");
                 }
-
-                if ( leng < stringBuild.length() ){
+                if (leng < stringBuild.length()) {
                     boolka = false;
                     comBool = false;
                 }
@@ -185,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "SLAVIK IS REALY MACHINE", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
                 number.setNumberOne(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
@@ -198,17 +194,38 @@ public class MainActivity extends AppCompatActivity {
         subtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (stringBuild.length() == 0) {
-                    stringBuild.append("-");
-                    tvResult.setText(stringBuild);
-                } else {
-                    Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
+                operationEnum = OperationEnum.PLUS;
+                if (number.getNumberOne() != 0 && tvResult.getText() != "0" ){
                     String a = (String) tvResult.getText();
                     number.setNumberOne(Double.parseDouble(a));
                     stringBuild.delete(0, stringBuild.length());
                     operationEnum = OperationEnum.SUBTRACTION;
                     boolka = false;
                     comBool = false;
+                } else {
+                    if (stringBuild.length() != 0) {
+                        if (stringBuild.length() == 1 && !stringBuild.substring(0, 0).equals("-")) {
+                            stringBuild.append("0.0");
+                            tvResult.setText(stringBuild);
+                        }
+                        String a = (String) tvResult.getText();
+                        number.setNumberOne(Double.parseDouble(a));
+                        stringBuild.delete(0, stringBuild.length());
+                        operationEnum = OperationEnum.SUBTRACTION;
+                        boolka = false;
+                        comBool = false;
+
+                    } else {
+                        String a = (String) tvResult.getText();
+                        number.setNumberOne(Double.parseDouble(a));
+                        stringBuild.delete(0, stringBuild.length());
+                        operationEnum = OperationEnum.SUBTRACTION;
+                        boolka = false;
+                        comBool = false;
+
+                        stringBuild.append("-");
+                        tvResult.setText(stringBuild);
+                    }
                 }
             }
         });
@@ -216,7 +233,6 @@ public class MainActivity extends AppCompatActivity {
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
                 number.setNumberOne(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
@@ -245,7 +261,6 @@ public class MainActivity extends AppCompatActivity {
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
                 number.setNumberOne(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
@@ -259,7 +274,6 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "SVLAVIK IS XYI", Toast.LENGTH_SHORT).show();
                 String a = (String) tvResult.getText();
                 number.setNumberTwo(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
