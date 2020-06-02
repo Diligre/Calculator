@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     private OperationEnum operationEnum;
     private StringBuilder stringBuild;
 
+    private Boolean boolka;
+    private Boolean comBool;
+
     public TextView tvResult;
 
     public ImageButton plus;
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        boolka = false;
+        comBool = false;
 
         number = new Number();
         operationEnum = OperationEnum.DEFAULT;
@@ -71,33 +77,66 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.imZero:
-                        stringBuild.append(0);
-                        break;
+
+                        if (boolka) {
+                            stringBuild.append(0);
+                        }
+                        else if (stringBuild.indexOf("0") != 0) {
+                            stringBuild.append(0);
+                    }
+                    break;
                     case R.id.imOne:
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
+                            stringBuild.delete(0,stringBuild.length());
+                        }
                         stringBuild.append(1);
                         break;
                     case R.id.imTwo:
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
+                            stringBuild.delete(0,stringBuild.length());
+                        }
                         stringBuild.append(2);
                         break;
                     case R.id.imThree:
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
+                            stringBuild.delete(0,stringBuild.length());
+                        }
                         stringBuild.append(3);
                         break;
                     case R.id.imFour:
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
+                            stringBuild.delete(0,stringBuild.length());
+                        }
                         stringBuild.append(4);
                         break;
                     case R.id.imFive:
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
+                            stringBuild.delete(0,stringBuild.length());
+                        }
                         stringBuild.append(5);
                         break;
                     case R.id.imSix:
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
+                            stringBuild.delete(0,stringBuild.length());
+                        }
                         stringBuild.append(6);
                         break;
                     case R.id.imSeven:
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
+                            stringBuild.delete(0,stringBuild.length());
+                        }
                         stringBuild.append(7);
                         break;
                     case R.id.imEight:
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
+                            stringBuild.delete(0,stringBuild.length());
+                        }
                         stringBuild.append(8);
                         break;
                     case R.id.imNine:
+                        if (stringBuild.length() == 1 && stringBuild.indexOf("0") == 0){
+                            stringBuild.delete(0,stringBuild.length());
+                        }
                         stringBuild.append(9);
                         break;
                 }
@@ -119,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         clearLastSymbol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int leng = stringBuild.indexOf(".");
 
                 if (stringBuild.length() != 0) {
                     stringBuild.delete(stringBuild.length() - 1, stringBuild.length());
@@ -133,6 +173,12 @@ public class MainActivity extends AppCompatActivity {
                 if (tvResult.getText().length() < 1) {
                     tvResult.setText("0");
                 }
+
+                if ( leng < stringBuild.length() ){
+                    boolka = false;
+                    comBool = false;
+                }
+
             }
         });
 
@@ -144,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
                 number.setNumberOne(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
                 operationEnum = OperationEnum.PLUS;
+                boolka = false;
+                comBool = false;
             }
         });
 
@@ -159,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
                     number.setNumberOne(Double.parseDouble(a));
                     stringBuild.delete(0, stringBuild.length());
                     operationEnum = OperationEnum.SUBTRACTION;
+                    boolka = false;
+                    comBool = false;
                 }
             }
         });
@@ -171,18 +221,23 @@ public class MainActivity extends AppCompatActivity {
                 number.setNumberOne(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
                 operationEnum = OperationEnum.DIVIDE;
+                boolka = false;
+                comBool = false;
             }
         });
 
         colon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (stringBuild.length() == 0){
-                    stringBuild.append("0.");
+                if (!comBool) {
+                    if (stringBuild.length() == 0) {
+                        stringBuild.append("0.");
+                    } else if (!stringBuild.substring(stringBuild.length() - 1, stringBuild.length()).equals(".")) {
+                        stringBuild.append(".");
+                    }
+                    boolka = true;
                 }
-                else {
-                    stringBuild.append(".");
-                }
+                comBool = true;
                 tvResult.setText(stringBuild);
             }
         });
@@ -195,6 +250,8 @@ public class MainActivity extends AppCompatActivity {
                 number.setNumberOne(Double.parseDouble(a));
                 stringBuild.delete(0, stringBuild.length());
                 operationEnum = OperationEnum.MULTIPLY;
+                boolka = false;
+                comBool = false;
             }
         });
 
@@ -232,6 +289,8 @@ public class MainActivity extends AppCompatActivity {
                 String b = (String) tvResult.getText();
                 number.setNumberOne(Double.parseDouble(b));
                 stringBuild.delete(0, stringBuild.length());
+                boolka = false;
+                comBool = false;
             }
         });
     }
