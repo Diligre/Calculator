@@ -3,6 +3,7 @@ package com.example.calculator;
 public class Number {
 
     private double numberOne;
+
     private double numberTwo;
 
     public double getNumberOne() {
@@ -20,4 +21,5 @@ public class Number {
     public void setNumberTwo(double numberTwo) {
         this.numberTwo = numberTwo;
     }
+
 }
