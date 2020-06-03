@@ -194,38 +194,15 @@ public class MainActivity extends AppCompatActivity {
         subtraction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                operationEnum = OperationEnum.PLUS;
-                if (number.getNumberOne() != 0 && tvResult.getText() != "0" ){
+                if (stringBuild.length() == 0) {
+                    stringBuild.append("-");
+                    tvResult.setText(stringBuild);
+                } else {
+                    Toast.makeText(getApplicationContext(), operationEnum + "", Toast.LENGTH_SHORT).show();
                     String a = (String) tvResult.getText();
                     number.setNumberOne(Double.parseDouble(a));
                     stringBuild.delete(0, stringBuild.length());
                     operationEnum = OperationEnum.SUBTRACTION;
-                    boolka = false;
-                    comBool = false;
-                } else {
-                    if (stringBuild.length() != 0) {
-                        if (stringBuild.length() == 1 && !stringBuild.substring(0, 0).equals("-")) {
-                            stringBuild.append("0.0");
-                            tvResult.setText(stringBuild);
-                        }
-                        String a = (String) tvResult.getText();
-                        number.setNumberOne(Double.parseDouble(a));
-                        stringBuild.delete(0, stringBuild.length());
-                        operationEnum = OperationEnum.SUBTRACTION;
-                        boolka = false;
-                        comBool = false;
-
-                    } else {
-                        String a = (String) tvResult.getText();
-                        number.setNumberOne(Double.parseDouble(a));
-                        stringBuild.delete(0, stringBuild.length());
-                        operationEnum = OperationEnum.SUBTRACTION;
-                        boolka = false;
-                        comBool = false;
-
-                        stringBuild.append("-");
-                        tvResult.setText(stringBuild);
-                    }
                 }
             }
         });
